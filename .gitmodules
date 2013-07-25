@@ -1,0 +1,15 @@
+[submodule "modules/apt"]
+	path = modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "modules/nginx"]
+	path = modules/nginx
+	url = https://github.com/example42/puppet-nginx.git
+[submodule "modules/stdlib"]
+	path = modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "modules/mysql"]
+	path = modules/mysql
+	url = https://github.com/example42/puppet-mysql.git
+[submodule "modules/puppi"]
+	path = modules/puppi
+	url = https://github.com/example42/puppi.git
