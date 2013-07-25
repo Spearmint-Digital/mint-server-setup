@@ -58,7 +58,7 @@ class nginx-setup {
     file { '/etc/nginx/sites-available/default':
         require => Package["nginx"],
         ensure => file,
-        source => '/vagrant/conf/nginx/default',
+        source => '/etc/puppet/conf/nginx/default',
         notify => Service["nginx"],
         owner  => root,
         group  => root,
@@ -116,7 +116,7 @@ class php-setup {
         owner  => root,
         group  => root,
         mode   => 664,
-        source => "/vagrant/conf/php/conf.d/php.ini",
+        source => "/etc/puppet/conf/php/conf.d/php.ini",
         notify => Service['php5-fpm'],
     }
 
@@ -126,7 +126,7 @@ class php-setup {
         owner  => root,
         group  => root,
         mode   => 664,
-        source => "/vagrant/conf/php/fpm/pool.d/www.conf",
+        source => "/etc/puppet/conf/php/fpm/pool.d/www.conf",
         notify => Service['php5-fpm'],
     }
 }

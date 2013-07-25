@@ -10,6 +10,7 @@ apt-get --yes install git puppet
 # Fetch puppet configuration from public git repository and get sumodules
 mv /etc/puppet /etc/puppet.orig
 git clone https://github.com/Spearmint-Digital/mint-server-setup.git /etc/puppet
+cd /etc/puppet
 git submodule update --init
 
 # Run puppet.
