@@ -90,7 +90,8 @@ class nginx-setup {
         require => Package["nginx"],
         ensure  => 'present',
         mode    => '0755',
-        owner    => 'nginx',
+        owner   => 'www-data',
+        group   => 'www-data',
         notify => Service["nginx"],
     }
 }
