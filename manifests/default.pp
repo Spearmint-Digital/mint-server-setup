@@ -17,7 +17,6 @@ class system-update {
 }
 
 #install packages for development
-#TODO consider ommiting on live server
 class dev-packages {
 
     $devPackages = [ "vim", "git", "capistrano"]
@@ -38,6 +37,15 @@ class dev-packages {
         command => 'gem install capistrano-ext',
         require => Package["capistrano"],
     }
+}
+
+#install a software firewall
+class ufw-setup {
+  package { 'ufw':
+    ensure => present,
+  }
+
+  Package['ufw'] -> Exec['ufw allow http'] -> Exec['ufw allow http'] -> Exec['ufw enable']    
 }
 
 class nginx-setup {
@@ -75,6 +83,16 @@ class nginx-setup {
         ensure => link,
         target => "/etc/nginx/sites-available/default",
         owner => root
+    }
+
+    #make sure the www folder is writable by nginx
+    file {
+        require => Package["nginx"],
+        '/var/www':
+        ensure  => 'present',
+        mode    => '0755',
+        owner    => 'nginx',
+        notify => Service["nginx"],
     }
 }
 
