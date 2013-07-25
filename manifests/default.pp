@@ -86,9 +86,8 @@ class nginx-setup {
     }
 
     #make sure the www folder is writable by nginx
-    file {
+    file { '/var/www':
         require => Package["nginx"],
-        '/var/www':
         ensure  => 'present',
         mode    => '0755',
         owner    => 'nginx',
